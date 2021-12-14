@@ -1,3 +1,4 @@
-import _graphql from "./_graphql";
+import { queryField, mutateField } from "./_graphql";
 
-export const competitionGraphQLField = _graphql;
+export const competitionQueryField = queryField;
+export const competitionMutateField = mutateField;

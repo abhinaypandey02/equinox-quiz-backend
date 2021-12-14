@@ -1,21 +1,33 @@
 import express from "express";
 import { graphqlHTTP } from "express-graphql";
 import { GraphQLObjectType, GraphQLSchema } from "graphql";
-import { competitionGraphQLField as competition } from "./models/Competition";
-import { userGraphQLField as user } from "./models/User";
+import { competitionQueryField, competitionMutateField } from "./models/Competition";
+import { userQueryField, userMutateField } from "./models/User";
 import mongoose from "mongoose";
 
 const app = express();
 
-const schema = new GraphQLSchema({
-  query: new GraphQLObjectType({
-    name: "QuizDB",
-    description: "GraphQL api for the quiz",
-    fields: () => ({
-      competition,
-      user,
-    }),
+const BaseQuery = new GraphQLObjectType({
+  name: "Query",
+  description: "GraphQL query api for the quiz",
+  fields: () => ({
+    competition: competitionQueryField,
+    user:userQueryField,
   }),
+});
+
+const BaseMutation = new GraphQLObjectType({
+  name: "Mutations",
+  description: "GraphQL mutations api for the quiz",
+  fields: () => ({
+    competition:competitionMutateField,
+    user:userMutateField,
+  }),
+});
+
+const schema = new GraphQLSchema({
+  query: BaseQuery,
+  mutation: BaseMutation,
 });
 
 app.use(

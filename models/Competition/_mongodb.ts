@@ -2,9 +2,10 @@ import mongoose from "mongoose";
 import { modelName } from "./_config";
 
 const schema = new mongoose.Schema({
-  test: {
+  name: {
     type: String,
+    required:true
   },
 });
 
-const model = mongoose.model(modelName, schema);
+export const model = mongoose.model(modelName, schema);

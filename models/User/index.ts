@@ -1,3 +1,4 @@
-import _graphql from "./_graphql";
+import { queryField, mutateField } from "./_graphql";
 
-export const userGraphQLField = _graphql;
+export const userQueryField = queryField;
+export const userMutateField = mutateField;
