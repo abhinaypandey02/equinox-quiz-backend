@@ -1,10 +1,11 @@
 import { GraphQLObjectType, GraphQLSchema, GraphQLString } from "graphql";
+import { modelDescription, modelName } from "./_config";
 
 // User GraphQL
 
 const objectType = new GraphQLObjectType({
-  name: "User",
-  description: "User",
+  name: modelName + "(Object)",
+  description: modelDescription + "(Object)",
   fields: () => ({
     test: {
       type: GraphQLString,
@@ -14,7 +15,7 @@ const objectType = new GraphQLObjectType({
 
 const field = {
   type: objectType,
-  description: "User",
+  description: modelDescription + "(Object)",
   resolve: () => ({ test: "Userrr" }),
 };
 
