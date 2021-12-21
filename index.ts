@@ -1,8 +1,9 @@
 import express from "express";
-import { graphqlHTTP } from "express-graphql";
-import { GraphQLObjectType, GraphQLSchema } from "graphql";
-import { competitionQueryField, competitionMutateField } from "./models/Competition";
-import { userQueryField, userMutateField } from "./models/User";
+import {graphqlHTTP} from "express-graphql";
+import {GraphQLObjectType, GraphQLSchema} from "graphql";
+import {competitionMutateField, competitionQueryField} from "./models/Competition/graphql";
+import {participantMutateField, participantQueryField} from "./models/Participant/graphql";
+import {userMutateField, userQueryField} from "./models/User/graphql";
 import mongoose from "mongoose";
 
 const app = express();
@@ -12,7 +13,8 @@ const BaseQuery = new GraphQLObjectType({
   description: "GraphQL query api for the quiz",
   fields: () => ({
     competition: competitionQueryField,
-    user:userQueryField,
+    user: userQueryField,
+    participant: participantQueryField
   }),
 });
 
@@ -20,8 +22,9 @@ const BaseMutation = new GraphQLObjectType({
   name: "Mutations",
   description: "GraphQL mutations api for the quiz",
   fields: () => ({
-    competition:competitionMutateField,
-    user:userMutateField,
+    competition: competitionMutateField,
+    user: userMutateField,
+    participant: participantMutateField,
   }),
 });
 

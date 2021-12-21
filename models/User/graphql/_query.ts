@@ -1,7 +1,6 @@
-import { GraphQLObjectType, GraphQLList, GraphQLString } from "graphql";
-import { getAll } from "../../../helpers/_mongodb";
-import { modelDescription, modelName } from "../_config";
-import { model as userModel } from "../_mongodb";
+import {GraphQLList, GraphQLObjectType, GraphQLString} from "graphql";
+import {modelDescription, modelName} from "../config";
+import {getAllUsers} from "../mongodb";
 
 export const queryObjectType = new GraphQLObjectType({
   name: modelName + "QueryObject",
@@ -16,7 +15,7 @@ export const queryObjectType = new GraphQLObjectType({
 const field = {
   type: GraphQLList(queryObjectType),
   description: modelDescription + "(Query Field)",
-  resolve: async () => await getAll(userModel),
+  resolve: async () => await getAllUsers(),
 };
 
 export default field;
