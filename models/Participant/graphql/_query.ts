@@ -1,6 +1,8 @@
 import {GraphQLList, GraphQLObjectType, GraphQLString} from "graphql";
 import {modelDescription, modelName} from "../config";
 import {getAllParticipants} from "../mongodb";
+import {competitionQueryObjectType} from "../../Competition/external";
+import {getOneCompetitionByID} from "../../Competition/mongodb";
 
 export const queryObjectType = new GraphQLObjectType({
   name: modelName + "QueryObject",
