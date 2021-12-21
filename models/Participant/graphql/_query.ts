@@ -1,8 +1,7 @@
 import {GraphQLList, GraphQLObjectType, GraphQLString} from "graphql";
 import {modelDescription, modelName} from "../config";
 import {getAllParticipants} from "../mongodb";
-// import { competitionQueryObjectType } from "../../Competition/external";
-// import { getCompetition } from "../../Competition/external";
+
 export const queryObjectType = new GraphQLObjectType({
   name: modelName + "QueryObject",
   description: modelDescription + "(Query Object)",
@@ -30,9 +29,12 @@ export const queryObjectType = new GraphQLObjectType({
       ),
     },
     competition: {
-      type: GraphQLString,
-      // resolve: async (parent) => await getCompetition(parent.competition),
+      type: GraphQLString
     },
+    // competition: {
+    //   type: competitionQueryObjectType,
+    //   resolve: async (parent) => await getOneCompetitionByID(parent.competition),
+    // },
   }),
 });
 const field = {

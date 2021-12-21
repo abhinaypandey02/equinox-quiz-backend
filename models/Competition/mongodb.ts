@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import {getAll, insertOne, pushToOne,} from "../../helpers/mongodb";
+import {getAll, getOneById, insertOne, pushToOne,} from "../../helpers/mongodb";
 import {modelName} from "./config";
 import ModelInterface from "./interface";
 
@@ -18,7 +18,7 @@ const model = mongoose.model(modelName, schema);
 
 export const getAllCompetitions = async () => await getAll(model);
 
-// export const getOneCompetitionByID = async (id: string) => await getOneById(model, id);
+export const getOneCompetitionByID = async (id: string) => await getOneById(model, id);
 
 export const insertOneCompetition = async (obj: ModelInterface) => await insertOne(model, obj);
 
