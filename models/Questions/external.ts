@@ -1,0 +1,1 @@
+export {queryObjectType as questionQueryObjectType} from "./graphql/_query";

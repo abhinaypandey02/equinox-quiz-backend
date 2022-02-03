@@ -1,5 +1,2 @@
-import query from "./_query";
-import mutate from "./_mutate";
-
-export const userQueryField = query;
-export const userMutateField = mutate;
+export {default as userQueryField} from './_query'
+export {default as userMutateField} from './_mutate'

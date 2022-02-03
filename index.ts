@@ -4,6 +4,7 @@ import {GraphQLObjectType, GraphQLSchema} from "graphql";
 import {competitionMutateField, competitionQueryField} from "./models/Competition/graphql";
 import {participantMutateField, participantQueryField} from "./models/Participant/graphql";
 import {userMutateField, userQueryField} from "./models/User/graphql";
+import {questionQueryField, questionMutateField} from "./models/Questions/graphql";
 import mongoose from "mongoose";
 
 const app = express();
@@ -14,7 +15,8 @@ const BaseQuery = new GraphQLObjectType({
   fields: () => ({
     competition: competitionQueryField,
     user: userQueryField,
-    participant: participantQueryField
+    participant: participantQueryField,
+    question: questionQueryField
   }),
 });
 
@@ -25,6 +27,7 @@ const BaseMutation = new GraphQLObjectType({
     competition: competitionMutateField,
     user: userMutateField,
     participant: participantMutateField,
+    question: questionMutateField
   }),
 });
 

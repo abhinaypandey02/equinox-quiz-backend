@@ -1,3 +1,1 @@
-import {queryObjectType} from "./graphql/_query";
-
-export const participantQueryObjectType = queryObjectType;
+export {queryObjectType as participantQueryObjectType} from "./graphql/_query";
